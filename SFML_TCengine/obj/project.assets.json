@@ -444,19 +444,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\gonza\\.nuget\\packages\\": {}
+    "C:\\Users\\alexv\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\gonza\\Source\\Repos\\EjerciendoLaPractica3\\SFML_TCengine\\SFML_TCengine.csproj",
+      "projectUniqueName": "C:\\Users\\alexv\\OneDrive\\Escritorio\\Programacion\\EjerciendoLaPractica3\\SFML_TCengine\\SFML_TCengine.csproj",
       "projectName": "SFML_TCengine",
-      "projectPath": "C:\\Users\\gonza\\Source\\Repos\\EjerciendoLaPractica3\\SFML_TCengine\\SFML_TCengine.csproj",
-      "packagesPath": "C:\\Users\\gonza\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\gonza\\Source\\Repos\\EjerciendoLaPractica3\\SFML_TCengine\\obj\\",
+      "projectPath": "C:\\Users\\alexv\\OneDrive\\Escritorio\\Programacion\\EjerciendoLaPractica3\\SFML_TCengine\\SFML_TCengine.csproj",
+      "packagesPath": "C:\\Users\\alexv\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\alexv\\OneDrive\\Escritorio\\Programacion\\EjerciendoLaPractica3\\SFML_TCengine\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\gonza\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\alexv\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -502,7 +502,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.408\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.406\\RuntimeIdentifierGraph.json"
       }
     }
   }
