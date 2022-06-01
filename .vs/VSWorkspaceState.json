@@ -1,7 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\SFML_TCengine",
+    "\\SFML_TCengine\\Source",
+    "\\SFML_TCengine\\Source\\Game"
   ],
-  "SelectedNode": "\\SFML_TCengine.sln",
+  "SelectedNode": "\\SFML_TCengine\\Source\\Game\\SpaceImpactGame.cs",
   "PreviewInSolutionExplorer": false
 }
