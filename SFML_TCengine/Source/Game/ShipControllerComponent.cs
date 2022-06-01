@@ -70,6 +70,14 @@ namespace TCGame
             }
 
             // TODO (1): Press G in order to activate the shield
+            if (Keyboard.IsKeyPressed(Keyboard.Key.G))
+            {
+                ShieldComponent shieldcomponent = Owner.GetComponent<ShieldComponent>();
+                if (shieldcomponent != null)
+                {
+                    shieldcomponent.ActivateShield();
+                }
+            }
         }
 
         private void RotateLeft(float _dt)
