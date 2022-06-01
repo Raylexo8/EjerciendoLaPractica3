@@ -17,6 +17,12 @@ namespace TCGame
         private Vector2f m_Forward;
         private bool m_IsUsingTurbo;
 
+        public Vector2f Forward
+        {
+            get => m_Forward;
+            set => m_Forward = value;
+        }
+
         public ShipControllerComponent()
         {
             m_LinearSpeed = DEFAULT_MOVEMENT_SPEED;

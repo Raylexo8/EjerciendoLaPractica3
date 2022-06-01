@@ -1,10 +1,7 @@
 {
   "ExpandedNodes": [
-    "",
-    "\\SFML_TCengine",
-    "\\SFML_TCengine\\Source",
-    "\\SFML_TCengine\\Source\\Game"
+    ""
   ],
-  "SelectedNode": "\\SFML_TCengine\\Source\\Game\\RocketLauncherComponent.cs",
+  "SelectedNode": "\\SFML_TCengine.sln",
   "PreviewInSolutionExplorer": false
 }
