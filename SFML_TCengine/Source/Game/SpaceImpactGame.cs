@@ -103,7 +103,6 @@ namespace TCGame
             actor.AddComponent<ShieldComponent>();
             actor.AddComponent<RocketLauncherComponent>();
             actor.AddComponent<LaserWeaponComponent>(0.3f);
-            actor.GetComponent<LaserWeaponComponent>().BulletTextureName = "Textures/Bullet";
             actor.AddComponent<AlwaysInWindowComponent>();
             LifeComponent lifeComponent = actor.AddComponent<LifeComponent>(1);
             lifeComponent.OnLifeDecreased += OnShipLifeDecreased;

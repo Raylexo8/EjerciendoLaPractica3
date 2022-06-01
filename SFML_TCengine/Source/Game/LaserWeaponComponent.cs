@@ -1,4 +1,5 @@
 ﻿using SFML.Graphics;
+using System;
 using SFML.System;
 using SFML.Window;
 using System.Collections.Generic;
@@ -10,16 +11,13 @@ namespace TCGame
     public class LaserWeaponComponent : BaseComponent
     {
         private const float DEFAULT_FIRE_RATE = 0.3f;
+        private static Vector2f UP_VECTOR = new Vector2f(0.0f, -1.0f);
 
-        private float m_FireRate;
-        private float m_TimeToShoot;
-        private string m_BulletTextureName;
+        float m_FireRate;
+        float m_TimeToShoot;
+        Vector2f m_MousePosition;
+        Vector2f m_Forward;
 
-        public string BulletTextureName
-        {
-            get => m_BulletTextureName;
-            set => m_BulletTextureName = value;
-        }
         public float FireRate
         {
             get => m_FireRate;
@@ -45,6 +43,8 @@ namespace TCGame
         public override void OnActorCreated()
         {
             base.OnActorCreated();
+            TecnoCampusEngine.Get.Window.MouseMoved += HandleMouseMoved;
+            TransformComponent laserTransformComponent = Owner.GetComponent<TransformComponent>();
         }
 
         public override void Update(float _dt)
@@ -52,7 +52,6 @@ namespace TCGame
             base.Update(_dt);
             // TODO (3): Remember to update the m_TimeToShoot member
             m_TimeToShoot -= _dt;
-            
         }
 
         public void Shoot()
@@ -63,15 +62,25 @@ namespace TCGame
                 TransformComponent transformComponent = Owner.GetComponent<TransformComponent>();
                 Debug.Assert(transformComponent != null);
 
+                //Create Actor 
                 Actor laserActor = new Actor("LaserActor");
-                SpriteComponent spriteComponent = laserActor.AddComponent<SpriteComponent>(m_BulletTextureName);
+
+                //Create Sprite
+                SpriteComponent spriteComponent = laserActor.AddComponent<SpriteComponent>("Textures/Bullet");
                 spriteComponent.m_RenderLayer = RenderComponent.ERenderLayer.Middle;
 
-                TransformComponent lasertransformComponent = laserActor.AddComponent<TransformComponent>();
-                lasertransformComponent.Transform.Position = transformComponent.Transform.Position;
-                lasertransformComponent.Transform.Rotation = transformComponent.Transform.Rotation;
+                //Set Position and Forward info
+                TransformComponent laserTransformComponent = laserActor.AddComponent<TransformComponent>();
+                laserTransformComponent.Transform.Position = transformComponent.Transform.Position;
+                Vector2f objectToMouseOffset = m_MousePosition - laserTransformComponent.Transform.Position;
+                m_Forward = objectToMouseOffset.Normal();
 
-                laserActor.AddComponent<ForwardMovementComponent>(Owner.GetComponent<ShipControllerComponent>().Forward, 700.0f);
+                //Set Rotation
+                float angle = MathUtil.AngleWithSign(m_Forward, UP_VECTOR);
+                laserTransformComponent.Transform.Rotation = angle;
+                
+                //Laser Weapon Components
+                laserActor.AddComponent<ForwardMovementComponent>(m_Forward, 700.0f);
                 laserActor.AddComponent<AsteroidDestructorComponent>();
                 laserActor.AddComponent<ExplosionComponent>();
                 laserActor.AddComponent<OutOfWindowDestructionComponent>();
@@ -79,7 +88,12 @@ namespace TCGame
                 TecnoCampusEngine.Get.Scene.CreateActor(laserActor);
                 m_TimeToShoot = m_FireRate;
             }
+        }
 
+        private void HandleMouseMoved(object _sender, MouseMoveEventArgs _moveEventArgs)
+        {
+            m_MousePosition.X = _moveEventArgs.X;
+            m_MousePosition.Y = _moveEventArgs.Y;
         }
 
         public override EComponentUpdateCategory GetUpdateCategory()
