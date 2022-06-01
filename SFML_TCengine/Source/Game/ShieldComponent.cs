@@ -17,6 +17,8 @@ namespace TCGame
         private const float MAX_SCALE = 1.0f;
 
         private Actor m_ShieldActor;
+        TransformComponent m_ShieldTransform;
+        private Vector2f m_CurrentScale;
 
         private enum EState
         {
@@ -59,14 +61,44 @@ namespace TCGame
             base.Update(_dt);
 
             // TODO (1): You need to implement the code that update the different states of the ShieldComponent in the Update
+            switch (m_CurrentState)
+	        {
+                   case EState.Loading:
+                    UpdatingLoading();
+                        break;
+                   case EState.Loaded:
+                        break;
+                   case EState.Unloading:
+                        break;
+                   default:
+                        break;
+	        }
         }
+
+        void UpdatingLoading()
+        {
+            //From MIN_SCALE to MAX_SCALE
+            m_ShieldTransform.Transform.Scale = m_CurrentScale;
+
+            // aqui tengo que hacer algo con el time que me tiene confuso como se hacia
+
+
+
+            // Exit when MAX_SCALE has been reached
+            if (true)
+            {
+
+            }
+        }
+
+
 
         private void CreateShieldActor()
         {
             m_ShieldActor = new Actor("Shield Actor");
 
             m_ShieldActor.AddComponent<AnimatedSpriteComponent>("Textures/Shield", 3u, 2u);
-            m_ShieldActor.AddComponent<TransformComponent>();
+            TransformComponent m_ShieldTransform = m_ShieldActor.AddComponent<TransformComponent>();
             m_ShieldActor.AddComponent<ParentActorComponent>(Owner, new Vector2f(0.0f, 20.0f));
 
             TecnoCampusEngine.Get.Scene.CreateActor(m_ShieldActor);
@@ -86,6 +118,7 @@ namespace TCGame
             {
                 case EState.Loading:
                     CreateShieldActor();
+                    m_CurrentScale = new Vector2f(MIN_SCALE,MIN_SCALE);
                     break;
                 default:
                     break;
