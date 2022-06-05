@@ -44,7 +44,6 @@ namespace TCGame
         {
             base.OnActorCreated();
             TecnoCampusEngine.Get.Window.MouseMoved += HandleMouseMoved;
-            TransformComponent laserTransformComponent = Owner.GetComponent<TransformComponent>();
         }
 
         public override void Update(float _dt)

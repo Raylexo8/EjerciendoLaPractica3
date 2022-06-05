@@ -38,9 +38,15 @@ namespace TCGame
 
             // TODO (2): Change the property of this component that tells us if we are using turbo or not when pressing the Left Shift key
 
+            if (Keyboard.IsKeyPressed(Keyboard.Key.LShift))
+            {
+                // Check if it is using the Turbo
+                CalculateSpeed();
+                m_IsUsingTurbo = true;
+            }
+            else
+                m_IsUsingTurbo = false; CalculateSpeed();
 
-            // Check if it is using the Turbo
-            CalculateSpeed();
 
             if (Keyboard.IsKeyPressed(Keyboard.Key.A))
             {
